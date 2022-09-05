@@ -17,14 +17,17 @@ import com.example.recyclerviewsuraj.R;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import kotlin.jvm.internal.CollectionToArray;
 
 public class RecyclerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    Collection list;
-    public RecyclerAdapter(Collection list) {
+    List list;
+    Context context;
+    public RecyclerAdapter(List list,Context context) {
         this.list = list;
+        this.context=context;
 
     }
 
@@ -53,7 +56,7 @@ public class RecyclerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         if(holder instanceof viewHolderOne){
-             ((viewHolderOne) holder).bind(list);
+             ((viewHolderOne) holder).bind((item_1) list.get(position));
              ((viewHolderOne) holder).item1_nameTextView.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View view) {
@@ -64,7 +67,7 @@ public class RecyclerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHold
         }
         else
         {
-            ((viewHolderTwo) holder).bind(list);
+            ((viewHolderTwo) holder).bind((item_2)(list.get(position)));
             ((viewHolderTwo) holder).item2_nameTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -86,7 +89,7 @@ public class RecyclerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHold
     // <--number of item we want to show in recyclerview-->
     @Override
     public int getItemCount() {
-        return 20;
+        return list.size();
     }
   // <--view holder for item 1-->
    public class  viewHolderOne extends RecyclerView.ViewHolder{
