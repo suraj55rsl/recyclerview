@@ -11,8 +11,11 @@ import android.widget.Toast;
 
 import com.example.recyclerviewsuraj.Adapters.RecyclerAdapter;
 import com.example.recyclerviewsuraj.Classes.RecyclerItemClickListener;
+import com.example.recyclerviewsuraj.Models.item_1;
+import com.example.recyclerviewsuraj.Models.item_2;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class MainActivity extends AppCompatActivity {
     //Adapter object declaration
@@ -21,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Collection values=new ArrayList<>();
+        values.add(new item_1("SURAJ KUMAR",1200,23000));
+        values.add(new item_1("NEERAJ KUMAR",12,230));
+        values.add(new item_1("AMISHA",12,2390));
+        values.add(new item_1("SAURABH",129,24));
+        values.add(new item_2("GARIMA","INDIA",1290,244));
+        values.add(new item_2("MOHIT","USA",1298,224));
+        values.add(new item_2("SURAJ","LONDON",12398,23324));
         //AdapterObject accesssing recyclerview
         recyclerView=findViewById(R.id.recyclerview);
         //setting adapterview with recyclerview
@@ -33,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
          recyclerView.setLayoutManager(gridLayoutManager);
          */
        // <--linear layout manager-->
+
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         // recycler item lishner implementaion

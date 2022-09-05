@@ -10,30 +10,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.recyclerviewsuraj.MainActivity;
 import com.example.recyclerviewsuraj.Models.item_1;
 import com.example.recyclerviewsuraj.Models.item_2;
 import com.example.recyclerviewsuraj.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
+import kotlin.jvm.internal.CollectionToArray;
 
 public class RecyclerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>{
-//    ArrayList<item_1> list1;
-//    Context context;
-//    ArrayList<item_2> list2;
-//
-//    public RecyclerAdapter(ArrayList<item_1> list1, ArrayList<item_2> list2, Context context) {
-//        this.list1 = list1;
-//        this.list2 = list2;
-//        this.context = context;
-//    }
 
+    Collection list;
+    public RecyclerAdapter(Collection list) {
+        this.list = list;
 
-    ArrayList<item_1> list1;
-    Context context;
-
-    public RecyclerAdapter(ArrayList<item_1> itemOneList) {
-        this.list1=itemOneList;
     }
 
 
@@ -60,27 +52,27 @@ public class RecyclerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-//        if(holder instanceof viewHolderOne){
-//             ((viewHolderOne) holder).bind(list1.get(position));
-//             ((viewHolderOne) holder).item1_nameTextView.setOnClickListener(new View.OnClickListener() {
-//                 @Override
-//                 public void onClick(View view) {
-//                     Toast.makeText(view.getContext(), "Type#a Followers:"+((viewHolderOne) holder).item1_followersTextView.getText().toString()+"Contributors:"+((viewHolderOne) holder).item1_followersTextView.getText().toString(),Toast.LENGTH_SHORT).show();
-//                 }
-//             });
-//
-//        }
-//        else
-//        {
-//            ((viewHolderTwo) holder).bind(list2.get(position));
-//            ((viewHolderTwo) holder).item2_nameTextView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(view.getContext(), "Type#b Followers:"+((viewHolderTwo) holder).item2_followersTextView.getText().toString()+"Contributors:"+((viewHolderTwo) holder).item2_followersTextView.getText().toString(),Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//
-//        }
+        if(holder instanceof viewHolderOne){
+             ((viewHolderOne) holder).bind(list);
+             ((viewHolderOne) holder).item1_nameTextView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                     Toast.makeText(view.getContext(), "Type#a Followers:"+((viewHolderOne) holder).item1_followersTextView.getText().toString()+"Contributors:"+((viewHolderOne) holder).item1_followersTextView.getText().toString(),Toast.LENGTH_SHORT).show();
+                 }
+             });
+
+        }
+        else
+        {
+            ((viewHolderTwo) holder).bind(list);
+            ((viewHolderTwo) holder).item2_nameTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(), "Type#b Followers:"+((viewHolderTwo) holder).item2_followersTextView.getText().toString()+"Contributors:"+((viewHolderTwo) holder).item2_followersTextView.getText().toString(),Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
 
     }
 
